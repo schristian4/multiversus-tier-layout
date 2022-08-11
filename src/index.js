@@ -8,8 +8,8 @@ let rankingOrder = [
   { D: ["iron_giant"] }
 ];
 
-const newButton = document.getElementsByClassName("btn-new");
-const tierRow = document.getElementById("tier-row");
+// const newButton = document.getElementsByClassName("btn-new");
+// const tierRow = document.getElementById("tier-row");
 let bodyContainer = document.getElementById("body-container");
 
 let rank = rankingOrder.map((rank) => {

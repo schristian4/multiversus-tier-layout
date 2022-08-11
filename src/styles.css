@@ -109,7 +109,7 @@ img {
 
 .avatar-wrapper {
   height: inherit;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   overflow-y: hidden;
   white-space: nowrap;
   -ms-overflow-style: none;
@@ -160,9 +160,17 @@ img {
   }
   .btn-new {
     width: 100%;
+    transition: width 1s;
   }
   .input-filter-project {
     height: 60%;
+    transition: height 1s;
+  }
+}
+@media (max-width: 809.98px) {
+  .avatar {
+    height: 95%;
+    transition: height 1s;
   }
 }
 
