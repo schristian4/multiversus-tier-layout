@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
-   </head>
-   
-  <body>
-    <!-- <div id="app"></div> -->
-
-    <div class="main-container glassmorph">
-			<div id="header-container">
-					<h2>MULTIVERSUS</h2>
-				 	<div class="btn-wrapper">
-            <button class="btn btn-new"> <span>+</span> <span>Add New Row</span></button></span>
-           </div>
-           <input type="text" class="input-filter-project" placeholder="Search for character..."/>
+<head>
+	<title>Parcel Sandbox</title>
+	<meta charset="UTF-8" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+	<div class="main-container glassmorph">
+		<div id="header-container">
+			<div class="header-wrapper">
+				<span class="header">MULTIVERSUS</span>
 			</div>
-			<div id="body-container">
+			<div class="btn-wrapper">
+				<button class="btn btn-new"> <span>+ Add New Row</span></button></span>
+			</div>
+			<div class="input-wrapper">
+				<input type="text" class="input-filter-project" placeholder="Search for character..."/>
 			</div>
 		</div>
-
+		<div id="body-container"></div>
+	</div>
     <script src="src/index.js"></script>
-  </body>
+</body>
 </html>
 
