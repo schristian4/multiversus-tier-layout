@@ -10,16 +10,14 @@ body {
     rgba(253, 29, 29, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
-  margin: 0;
+  margin: 2em;
   padding: 0;
   height: 100%;
 }
 .main-container {
   width: 80vw;
-
-  height: inherit;
+  height: fit-content;
   border-radius: 1em;
-  margin: 2em;
 }
 .glassmorph {
   background: rgba(12, 19, 25, 0.55);
@@ -35,27 +33,52 @@ body {
   padding: 0.75em;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 1fr 1fr;
 
   grid-template-areas:
     "heading btNew"
     "input input";
 }
+.header-wrapper {
+  grid-area: heading;
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+  align-items: center;
+}
+.header {
+  font-size: 2em;
+}
 #body-container {
   display: flex;
   flex-direction: column;
 }
-.input-filter-project {
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   grid-area: input;
+}
+.input-filter-project {
   border: 2px solid lightcoral;
   background-color: #fff6f6;
   border-radius: 0.5em;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  width: 100%;
+  height: 80%;
+  /* margin-top: 1em;
+  margin-bottom: 1em; */
 }
-input[type="text"] {
+
+/* input[type="text"] {
   font-size: 1em;
+  width: 100%;
+  height: 100%;
+} */
+img {
+  margin: 2px;
 }
 .btn-wrapper {
   grid-area: btNew;
@@ -68,36 +91,45 @@ input[type="text"] {
 .btn {
   display: flex;
   justify-content: space-evenly;
-  height: 100%;
+
   align-items: center;
 }
-.btn-new {
-  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
 
+.btn-new {
+  height: 70%;
   width: 10em;
-  height: 5ex;
   color: white;
   border: none;
   border-radius: 5px;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.5em;
+  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
   cursor: pointer;
 }
+
 .avatar-wrapper {
   height: inherit;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  overflow-style: none;
 }
+
 .avatar {
   height: inherit;
 }
+
 .tier-row {
   border-radius: 1em;
   border: 1px dashed gray;
   margin: 0.5em;
   display: flex;
   justify-content: flex-start;
-  height: 6em;
+  height: 10em;
   padding: 5px;
 }
+
 .tier-heading-wrapper {
   display: flex;
   justify-content: center;
@@ -105,20 +137,53 @@ input[type="text"] {
   align-items: center;
   padding-right: 1em;
 }
+
 .tier-heading {
   font-size: 3em;
   padding: 0;
   margin: 0;
 }
-@media (min-width: 765.98px) {
-  .main-container {
-    width: 50vw;
+
+@media (max-width: 330.98px) {
+  .header {
+    font-size: 1.5em;
   }
 }
-@media (max-width: 450.98px) {
+@media (max-width: 550.98px) {
   #header-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.25fr 1fr 0.25fr;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "heading"
+      "input"
+      "btNew";
+  }
+  .btn-new {
+    width: 100%;
+  }
+  .input-filter-project {
+    height: 60%;
+  }
+}
+
+/* 
+@media (max-width: 500.98px) {
+  .main-container {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 605px) {
+  #header-container {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+@media (max-width: 600.98px) {
+  
+  #header-container {
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
       "heading"
       "input"
@@ -130,14 +195,7 @@ input[type="text"] {
   .avatar {
     height: 100%;
   }
-  .avatar-wrapper {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    -ms-overflow-style: none;
-    overflow-style: none;
-  }
-}
+} */
 
 /* Small devices (landscape phones, less than 768px) */
 /* @media (min-width: 767.98px) { 
