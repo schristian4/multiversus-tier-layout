@@ -19,12 +19,15 @@ let rank = rankingOrder.map((rank) => {
   });
   return ` 
   <div class="tier-row">
-    <div class="tier-heading-wrapper"><p class="tier-heading">${key}</p></div>
+    <div class="tier-heading-wrapper"><p class="tier-heading">${key}:</p></div>
     <div class="tier-body avatar-wrapper">
       ${images.join(",").replace(/,/g, "")}
     </div>
   </div>
   `;
 });
-
 bodyContainer.innerHTML = rank.join(",").replace(/,/g, "");
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("DOM fully loaded and parsed");
+});
