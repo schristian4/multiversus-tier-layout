@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +10,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./src/styles.css">
+	<link rel="stylesheet" href="./src/modal.css">
 </head>
 <body>
 	<div class="main-container glassmorph">
@@ -18,10 +22,23 @@
 				<button class="btn btn-new"> <span>+ ADD NEW ROW</span></button></span>
 			</div>
 			<div class="input-wrapper">
-				<input type="text" class="input-filter-project" placeholder="Search for character..."/>
+				<input id="input-field-character" type="text" class="input-filter-project" placeholder="Search for character..."/>
 			</div>
 		</div>
-		<div id="body-container"></div>
+		<div id="body-container">
+			<div id="tier-row-full-list"></div>
+			<div id="tier-row-container"></div>
+		</div>
+				<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div id="tier-selection-container"></div>
+		
+			</div>
+		</div>
+	
 	</div>
   <script src="src/index.js"></script>
 </body>

@@ -76,9 +76,7 @@ body {
   width: 100%;
   height: 100%;
 } */
-img {
-  margin: 2px;
-}
+
 .btn-wrapper {
   grid-area: btNew;
   display: flex;
@@ -118,6 +116,30 @@ img {
 .avatar {
   height: inherit;
 }
+.tier-full-list {
+  border-radius: 1em;
+  border: 1px dashed gray;
+  margin: 0.5em;
+  display: flex;
+  justify-content: flex-start;
+  height: 20em;
+  padding: 5px;
+}
+
+.tier-full-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex-start: flex-start;
+  width: 100%;
+}
+.tier-heading-wrapper {
+  display: flex;
+  justify-content: center;
+  height: inherit;
+  align-items: center;
+  padding-right: 1em;
+}
 
 .tier-row {
   border-radius: 1em;
@@ -128,21 +150,38 @@ img {
   height: 10em;
   padding: 5px;
 }
-
-.tier-heading-wrapper {
-  display: flex;
-  justify-content: center;
-  height: inherit;
-  align-items: center;
-  padding-right: 1em;
-}
-
 .tier-heading {
   font-size: 3em;
   padding: 0;
   margin: 0;
 }
-
+.tier-full-body > img {
+  border: 1px dashed transparent;
+  width: 6.44em;
+}
+.tier-full-body > img:hover {
+  border: 1px dashed coral;
+}
+.ranking-select-row {
+  border-radius: 1em;
+  margin: 0.5em;
+  display: flex;
+  justify-content: flex-start;
+  height: 10em;
+  padding: 5px;
+}
+.ranking-key-text {
+  font-size: 6em;
+  color: white;
+  display: flex;
+  border-radius: 0.15em;
+  margin: 5px;
+  border: 2px dashed darkgray;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
 @media (max-width: 330.98px) {
   .header {
     font-size: 1.5em;
