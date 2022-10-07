@@ -151,7 +151,7 @@ body {
   padding: 5px;
 }
 .tier-heading {
-  font-size: 3em;
+  font-size: 3.5em;
   padding: 0;
   margin: 0;
 }
@@ -170,17 +170,14 @@ body {
   height: 10em;
   padding: 5px;
 }
-.ranking-key-text {
-  font-size: 6em;
-  color: white;
-  display: flex;
-  border-radius: 0.15em;
-  margin: 5px;
-  border: 2px dashed darkgray;
-  width: 100%;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+.characterRemoveIcon {
+  border: 1px dashed transparent;
+}
+.characterRemoveIcon:hover {
+  border: 1px dashed red;
+}
+.tier-row:nth-child(1) > .tier-heading-wrapper {
+  color: gold;
 }
 @media (max-width: 330.98px) {
   .header {

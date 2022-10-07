@@ -21,6 +21,23 @@
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.ranking-key-text {
+  font-size: 6em;
+  color: white;
+  display: flex;
+  border-radius: 0.15em;
+  margin: 5px;
+  border: 2px dashed darkgray;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.ranking-key-text:hover {
+  color: orange;
+  border: 2px dashed orange;
+}
 /* The Close Button */
 .close {
   color: #aaa;

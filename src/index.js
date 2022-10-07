@@ -149,7 +149,6 @@ function modalDisplayEventListner() {
   console.log("trigger modal display");
   let tierFullList = document.querySelectorAll(".characterIcon");
   for (let i = 0; i < tierFullList.length; i++) {
-    debugger;
     tierFullList[i].addEventListener("click", (event) => {
       modal.style.display = "block";
       console.log(event.target.attributes["datavalue"].value);
@@ -167,12 +166,45 @@ function AddCharacterToRow(rank_Key, character) {
   updateTierRowContainer(renderRanks(rankingOrder));
 }
 // Removes a charactr from the list and re-renders the character list
-function removeFromCharacterList(content) {
+function removeCharacterFromRankList(content) {
   const findCharacter = (element) => element === content;
   let matchCharacterIndex = characterList.findIndex(findCharacter);
   characterList.splice(matchCharacterIndex, 1);
   updateCharacterRankList(renderCharacterRankList(characterList));
   modalDisplayEventListner();
+}
+
+// Removes a character from the ranking row
+function RemoveCharacterFromRankRow(character) {
+  for (let i = 0; i < rankingOrder.length; i++) {
+    let rank_Key = Object.keys(rankingOrder[i]);
+    if (rankingOrder[i][rank_Key] !== character) {
+      const findCharacter = (element) => element === character;
+      let matchCharacterIndex = rankingOrder[i][rank_Key].findIndex(
+        findCharacter
+      );
+      rankingOrder[i][rank_Key].splice(matchCharacterIndex, 1);
+      updateTierRowContainer(renderRanks(rankingOrder));
+      // rankingOrder[i][rank_Key].push(character);
+    }
+  }
+}
+
+function handleRemoveCharacterRankRow() {
+  let character_Remove_List = document.querySelectorAll(".characterRemoveIcon");
+  for (let i = 0; i < character_Remove_List.length; i++) {
+    character_Remove_List[i].addEventListener("click", (event) => {
+      selectedCharacter = event.target.attributes["datavalue"].value;
+      console.log("remove:", selectedCharacter);
+      RemoveCharacterFromRankRow(selectedCharacter);
+      characterList.push(selectedCharacter);
+      // updateCharacterRankList(renderCharacterRankList(characterList));
+      initializeAllFunctions();
+      // modal.style.display = "none";
+      // AddCharacterToRow(rank, selectedCharacter);
+      // removeCharacterFromRankList(selectedCharacter);
+    });
+  }
 }
 // Event - Add Character to Ranking Row
 function handlAddCharacterRow() {
@@ -181,7 +213,8 @@ function handlAddCharacterRow() {
       let rank = event.target.attributes["datavalue"].value;
       modal.style.display = "none";
       AddCharacterToRow(rank, selectedCharacter);
-      removeFromCharacterList(selectedCharacter);
+      removeCharacterFromRankList(selectedCharacter);
+      handleRemoveCharacterRankRow();
     });
   }
 }
@@ -191,9 +224,10 @@ function initializeAllFunctions() {
   updateTierRowContainer(renderRanks(rankingOrder));
   updateCharacterRankList(renderCharacterRankList(characterList));
   handleSearchCharacterModal();
-  modalDisplayEventListner();
+
   handleDisplayModal();
   handlAddCharacterRow();
+  modalDisplayEventListner();
 }
 initializeAllFunctions();
 
@@ -203,7 +237,7 @@ span.onclick = function () {
 };
 //Event - Close Modal Click Whitespace
 window.onclick = function (event) {
-  if (event.target == modal) {
+  if (event.target === modal) {
     modal.style.display = "none";
   }
 };
