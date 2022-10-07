@@ -22,9 +22,9 @@ var characterList = [
 
 var rankingOrder = [{ S: [] }, { A: [] }, { B: [] }, { C: [] }, { D: [] }];
 
-function clg(content) {
-  console.log(`${content}`, content);
-}
+// function clg(content) {
+//   console.log(`${content}`, content);
+// }
 
 // var rankingOrder = [
 //   { S: ["batman", "finn", "superman", "bugs"] },
@@ -55,49 +55,19 @@ function searchCharacter() {
   }
 }
 
-// Get the modal
+// Get the modal id
 var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
+// Get the <span> Close Button element that hides the modal
 var span = document.getElementsByClassName("close")[0];
-
 const rankingOrderKeys = rankingOrder.map((item) => Object.keys(item)[0]);
-
-// function searchCharacter(array, inputValue) {
-//   console.log(inputValue);
-//   var score = 0;
-//   array.filter((word) => (word === inputValue ? console.log(word) : ""));
-
-// }
-/**
- * Empty Row Field
- * Add New Row
- *
- */
-// const Add New Character = document.getElementsByClassName("btn-new");
-// const tierRow = document.getElementById("tier-row");
-// const rank_selection_list = document.querySelectorAll(".ranking-key-text");
-
 const tier_row_container = document.getElementById("tier-row-container");
 const tier_row_full_list = document.getElementById("tier-row-full-list");
 const tier_modal_selection_container = document.getElementById(
   "tier-modal-selection-container"
 );
-// const characterIcon = document.querySelectorAll(".characterIcon");
 
-// array.forEach(element => {
-
-// });
-// constcharacterIcon.forEach((element)=>{
-//   element.addEventListener("click", (event) => {
-//     console.log(event.target.attributes["charKey"].value);
-//   });
-
-// })
-
+// JSX - Create Tier Modal Div
 function tierModalSelectRow() {
   let icons = rankingOrderKeys.map((rankKey) => {
     return `
@@ -110,37 +80,24 @@ function tierModalSelectRow() {
     .replace(/,/g, "")}</div>`;
   return tierRow;
 }
-
-function renderRankingOrder(content) {
+// JSX - Create Tier Ranks
+function renderRanks(content) {
   let rank = content.map((rank) => {
     let key = Object.keys(rank);
-    let images = rank[key].map((img, index) => {
+    let characters = rank[key].map((img, index) => {
       return `<img class="avatar characterRemoveIcon" charKey="${index}" src="./image/${img}.webp" dataValue="${img}" alt="${img}">`;
     });
     return ` 
     <div class="tier-row">
       <div class="tier-heading-wrapper"><p class="tier-heading">${key}:</p></div>
       <div class="tier-body avatar-wrapper">
-        ${images.join(",").replace(/,/g, "")}
+        ${characters.join(",").replace(/,/g, "")}
       </div>
     </div>`;
   });
   return rank;
 }
-
-function renderCharacterRankList2() {
-  let images = characterList.map((img, index) => {
-    return `<img class="characterIcon" src="./image/${img}.webp" dataValue="${img}" alt="${img}">`;
-  });
-  return [
-    `<div class=" tier-full-list">
-    <div class="tier-heading-wrapper"><p class="tier-heading"> List: </p></div>
-    <div class="tier-full-body avatar-wrapper">
-      ${images.join(",").replace(/,/g, "")}
-    </div>
-  </div>`
-  ];
-}
+// JSX - Create Tier Ranking List with Characters
 function renderCharacterRankList(content) {
   let characterImage = content.map((img, index) => {
     return `<img class="characterIcon" src="./image/${img}.webp" dataValue="${img}" alt="${img}">`;
@@ -156,7 +113,6 @@ function renderCharacterRankList(content) {
   return characterDivArray;
 }
 /* Content Has Loaded Render Table */
-
 function updateTierRowContainer(content) {
   tier_row_container.innerHTML = content.join(",").replace(/,/g, "");
   console.log(tier_row_container);
@@ -164,12 +120,8 @@ function updateTierRowContainer(content) {
 function updateCharacterRankList(content) {
   tier_row_full_list.innerHTML = content;
 }
-// tier_row_full_list.innerHTML = renderCharacterRankList();
-tier_modal_selection_container.innerHTML = tierModalSelectRow();
 
-const tier_row_full_list_CharacterList = document.querySelectorAll(
-  ".characterIcon"
-);
+tier_modal_selection_container.innerHTML = tierModalSelectRow();
 const ranking_key_text = document.querySelectorAll(".ranking-key-text");
 
 /*-------------------
@@ -183,7 +135,7 @@ function handleDisplayModal() {
     searchCharacter(characterList, event.target.value);
   });
 }
-// Event - Search Character in Modal
+// Event - Search Character from character list
 function handleSearchCharacterModal() {
   inputField.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
@@ -192,7 +144,7 @@ function handleSearchCharacterModal() {
     }
   });
 }
-
+// Event - Display Ranking Modal
 function modalDisplayEventListner() {
   console.log("trigger modal display");
   let tierFullList = document.querySelectorAll(".characterIcon");
@@ -205,16 +157,16 @@ function modalDisplayEventListner() {
     });
   }
 }
-
+// Add Character to Ranking Row and Rerender update rank character list
 function AddCharacterToRow(rank_Key, character) {
   for (let i = 0; i < rankingOrder.length; i++) {
     if (rankingOrder[i][rank_Key] !== undefined) {
       rankingOrder[i][rank_Key].push(character);
     }
   }
-  updateTierRowContainer(renderRankingOrder(rankingOrder));
+  updateTierRowContainer(renderRanks(rankingOrder));
 }
-
+// Removes a charactr from the list and re-renders the character list
 function removeFromCharacterList(content) {
   const findCharacter = (element) => element === content;
   let matchCharacterIndex = characterList.findIndex(findCharacter);
@@ -222,6 +174,7 @@ function removeFromCharacterList(content) {
   updateCharacterRankList(renderCharacterRankList(characterList));
   modalDisplayEventListner();
 }
+// Event - Add Character to Ranking Row
 function handlAddCharacterRow() {
   for (let i = 0; i < ranking_key_text.length; i++) {
     ranking_key_text[i].addEventListener("click", (event) => {
@@ -233,17 +186,22 @@ function handlAddCharacterRow() {
   }
 }
 
-updateTierRowContainer(renderRankingOrder(rankingOrder));
-updateCharacterRankList(renderCharacterRankList(characterList));
-handleSearchCharacterModal();
-modalDisplayEventListner();
-handleDisplayModal();
-handlAddCharacterRow();
+// Initialize All Functions
+function initializeAllFunctions() {
+  updateTierRowContainer(renderRanks(rankingOrder));
+  updateCharacterRankList(renderCharacterRankList(characterList));
+  handleSearchCharacterModal();
+  modalDisplayEventListner();
+  handleDisplayModal();
+  handlAddCharacterRow();
+}
+initializeAllFunctions();
 
+//Event - Close button modal
 span.onclick = function () {
   modal.style.display = "none";
 };
-
+//Event - Close Modal Click Whitespace
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
